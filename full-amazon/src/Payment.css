@@ -22,13 +22,13 @@
 }
 
 .payment__title {
-  flex: 0.2;
+  flex: 0.15;
 }
 
 .payment__address,
 .payment__items,
 .payment__details {
-  flex: 0.8;
+  flex: 0.85;
 }
 
 .payment__details > form {

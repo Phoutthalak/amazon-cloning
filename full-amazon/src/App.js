@@ -11,6 +11,13 @@ import Footer from "./Footer";
 import ShippingTo from "./ShippingTo";
 import ScrollToTop from "./ScrollToTop";
 import Payment from "./Payment";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import Orders from "./Orders";
+
+const stripePromise = loadStripe(
+  "pk_test_51KbcvzGpU9pd4BKgiRbyXbXHJzFNWuPhcgVUp9aMNEiyEMdiZyd4v76kbQYEMgpwiSfGNCJjuIkZBi0hp14G3zYt00SXPGROkV"
+);
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -43,6 +50,16 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route
+            path="/orders"
+            element={
+              <>
+                <Header />
+                <Orders />
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route
             path="/checkout"
             element={
               <>
@@ -58,7 +75,9 @@ function App() {
             element={
               <>
                 <Header />
-                <Payment />
+                <Elements stripe={stripePromise}>
+                  <Payment />
+                </Elements>
                 <Footer />
               </>
             }
