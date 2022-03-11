@@ -20,7 +20,7 @@ const stripePromise = loadStripe(
 );
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [{},dispatch] = useStateValue();
   //create a listener for users
   useEffect(() => {
     // once app component loads
@@ -41,7 +41,7 @@ function App() {
         });
       }
     });
-  }, []);
+  },[]);
 
   return (
     <Router>
